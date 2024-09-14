@@ -1,15 +1,15 @@
 document.addEventListener('scroll', function () {
   const body = document.body;
 
-  // When scrolled down 100px or more, show buttons and hide quote
-  if (window.scrollY > 1) { // Adjust this value as needed
+
+  if (window.scrollY > 1) { 
     body.classList.add('show-buttons');
   } else {
     body.classList.remove('show-buttons');
   }
 });
 
-// Array of quotes
+
 const quotes = [
     "The only bad workout is the one that didn’t happen. - Unknown",
     "Push yourself because no one else is going to do it for you. - Unknown",
@@ -42,28 +42,28 @@ const quotes = [
     "If it doesn’t challenge you, it won’t change you. - Fred DeVito"
 ];
 
-// Function to get the current quote index based on time
+
 function getCurrentQuoteIndex() {
-  // Number of quotes
+
   const numberOfQuotes = quotes.length;
   
-  // Get the current time and round it down to the nearest day
+
   const now = new Date();
   const millisecondsPerDay = 24 * 60 * 60 * 1000;
   const daysSinceEpoch = Math.floor(now.getTime() / millisecondsPerDay);
   
-  // Determine which quote to display
+
   return daysSinceEpoch % numberOfQuotes;
 }
 
-// Function to display the quote
+
 function displayQuote() {
   const quoteElement = document.querySelector('.quote');
   const quoteIndex = getCurrentQuoteIndex();
   quoteElement.textContent = quotes[quoteIndex];
 }
 
-// Run the function to display the quote on page load
+
 window.onload = displayQuote;
 
 
