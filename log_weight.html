@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Weight</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="website.css">
+    <!-- Fonts and other external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+  <header class="header-style">
+    <button class="logo-button">
+      <a href="website.html">
+        <img class="logo" src="largelogo.png" alt="Logo">
+    </button>
+  </a> 
+</header>
+
+    <!-- Main Content -->
+    <main>
+        <section>
+            <h1 class="page-title">Log Your Weight</h1>
+            <form action="/submit_weight" method="POST" class="weight-form">
+                <label for="weight">Enter your weight (lbs):</label>
+                <input type="number" id="weight" name="weight" step="0.1" required>
+                
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+                
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </section>
+    </main>
+
+
+
+    <!-- Link to your JavaScript file -->
+    <script src="website.js"></script>
+</body>
+</html>

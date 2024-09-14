@@ -11,7 +11,7 @@ document.addEventListener('scroll', function () {
 
 // Array of quotes
 const quotes = [
-"The only bad workout is the one that didn’t happen. - Unknown",
+    "The only bad workout is the one that didn’t happen. - Unknown",
     "Push yourself because no one else is going to do it for you. - Unknown",
     "Success is not given. It is earned. - Unknown",
     "The difference between a successful person and others is not a lack of strength, not a lack of knowledge, but rather a lack in will. - Vince Lombardi",
@@ -65,4 +65,5 @@ function displayQuote() {
 
 // Run the function to display the quote on page load
 window.onload = displayQuote;
+
 

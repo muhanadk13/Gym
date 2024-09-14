@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Strength</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="website.css">
+    <!-- Fonts and other external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .button-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+        }
+        .action-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #565756;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .action-button:hover {
+            background-color: #bec4bf;
+        }
+        .page-title {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 28px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+  
+  <header class="header-style">
+    <button class="logo-button">
+      <a href="website.html">
+        <img class="logo" src="largelogo.png" alt="Logo">
+    </button>
+  </a> 
+</header>
+
+    <!-- Main Content -->
+    <main>
+        <section>
+            <h1 class="page-title">Log Your Strength</h1>
+            <div class="button-container">
+                <a href="bench.html">
+                    <button class="action-button"><img class="bench" src="bench.jpg"></button>
+                </a>
+                <a href="squat.html">
+                  <button class="action-button"><img class="squat" src="squat.jpg"></button>
+              </a>
+              <a href="deadlift.html">
+                <button class="action-button"><img class="deadlift" src="deadlift.jpg"></button>
+            </a>
+        </section>
+    </main>
+
+    <!-- Link to your JavaScript file -->
+    <script src="website.js"></script>
+</body>
+</html>

@@ -51,7 +51,7 @@ p {
 section {
     padding: 0px;
     color: #fff;
-    height: 725px;
+    height: 800px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -82,7 +82,7 @@ section {
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    gap: 30px;
+    gap: 100px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 1.5s, visibility 1.5s; 
@@ -95,6 +95,7 @@ section {
     border-radius: 50px;
     height: 400px;
     width: 400px;
+    background-color: #ffffff;
 }
 
 .show-buttons .quote-div {
@@ -109,7 +110,7 @@ section {
 .log_weight, .log_strength, .program {
   height: 100%;
   width: 100%;
-  border-radius: 50px;
+  border-radius: 20px;
 
 }
 
@@ -133,7 +134,7 @@ section {
 .action-button img.program {
     height: 100%;
     width: 100%;
-    border-radius: 50px;
+    border-radius: 20px;
     transition: transform 0.3s ease;
 }
 
@@ -141,5 +142,22 @@ section {
 .action-button:hover img.log_strength,
 .action-button:hover img.program {
     transform: scale(1.05);
+
 }
 
+.action-button img.bench,
+.action-button img.squat,
+.action-button img.deadlift {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+
+}
+
+.action-button:hover img.bench,
+.action-button:hover img.squat,
+.action-button:hover img.deadlift {
+    transform: scale(1.05);
+
+}
