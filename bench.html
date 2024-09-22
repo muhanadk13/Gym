@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Weight</title>
+    <link rel="stylesheet" href="website.css">
+    <link rel="stylesheet" href="weight-strength.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+    
+        window.onload = function() {
+            var dps = [];
+
+            var quotes = [
+    "The bench press isn’t just about the weight. It’s about the mindset. - Unknown",
+    "On the bench, it’s not the weight that’s heavy, it’s the excuses. - Unknown",
+    "Every rep on the bench is a step toward strength. - Unknown",
+    "Benching isn’t about how much you lift, but how much you grow. - Unknown",
+    "The only limit on the bench is the one in your mind. - Unknown",
+    "You don’t get stronger by avoiding the bench, you get stronger by attacking it. - Unknown",
+    "Leave everything on the bench, including your doubts. - Unknown",
+    "The bar doesn’t judge, it simply shows your progress. - Unknown",
+    "Every rep on the bench is a test of your determination. Pass it. - Unknown",
+    "The bench press isn’t about ego, it’s about endurance. - Unknown",
+    "Strength is built on the bench, one rep at a time. - Unknown",
+    "Don’t just lift the bar, lift yourself to a new level of strength. - Unknown",
+    "Your true strength is revealed under the bar. - Unknown",
+    "When you feel like stopping on the bench, remember why you started. - Unknown",
+    "You don’t fail on the bench; you learn what needs more work. - Unknown",
+    "Every heavy bench session is a battle against your weaker self. - Unknown",
+    "Push harder today, and tomorrow the bench will feel lighter. - Unknown",
+    "The bench doesn’t give you strength, it reveals the strength you already have. - Unknown"
+];
+
+
+            var today = new Date();
+            var quoteIndex = today.getDate() % quotes.length;
+
+
+            document.getElementById("motivationalQuote").innerText = quotes[quoteIndex];
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: "Bench Progression"
+                },
+                axisX: {
+                    title: "Date",
+                    valueFormatString: "MMM DD, YYYY", 
+                    labelAngle: -20, 
+                },
+                axisY: {
+                    title: "Weight"
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: dps
+                }]
+            });
+
+            function addDataPointsAndRender() {
+               
+                document.getElementById("quoteContainer").style.display = "none";
+                document.getElementById("chartContainer").style.display = "block";
+
+                
+                xValue = new Date(document.getElementById("yValue").value); 
+                yValue = Number(document.getElementById("xValue").value); 
+                
+           
+                dps.push({
+                    x: xValue,
+                    y: yValue
+                });
+
+                chart.render(); 
+            }
+
+            var renderButton = document.getElementById("renderButton");
+            renderButton.addEventListener("click", addDataPointsAndRender);
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</head>
+
+
+
+<body>
+    <header class="header-style">
+        <button class="logo-button">
+          <a href="website.html">
+            <img class="logo" src="images/largelogo.png" alt="Logo">
+        </button>
+      </a> 
+    </header>
+    <main>
+        <section class="input_format">
+            <div id="quoteContainer" style="font-family: 'Pinyon Script', cursive; display: block; text-align: center; font-size: 100px; height: 430px; font-family:Pinyon Script; color:#e0e5e5; margin: 0px;">
+                <p id="motivationalQuote"></p>
+            </div>
+            
+            <div id="chartContainer" style="height: 500px; width: 100vw; display: none;"></div>
+            <div class="submit-align">
+            
+                <label for="xValue" class="inp">
+                    <input type="number" id="xValue" placeholder="&nbsp;" required>
+                    <span class="label">Weight</span>
+                    <span class="focus-bg"></span>
+                </label>
+                
+                <label for="yValue" class="inp" style="margin-left: 10px;">
+                    <input type="date" id="yValue" placeholder="&nbsp;" required>
+                    <span class="label"></span>
+                    <span class="focus-bg"></span>
+                </label>
+                
+                <button class="submit_button" id="renderButton" role="button" style="margin-left: 100px;">Submit</button>
+                
+            </div>
+        </section>
+    </main>
+</body>
+</html>

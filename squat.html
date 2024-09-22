@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Weight</title>
+    <link rel="stylesheet" href="website.css">
+    <link rel="stylesheet" href="weight-strength.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    
+    <script type="text/javascript">
+        
+    
+        window.onload = function() {
+            var dps = []; 
+
+         
+            var quotes = [
+    "Squats: where leg day becomes a battle of will. - Unknown",
+    "The depth of your squat shows the strength of your determination. - Unknown",
+    "You don’t stop squatting when you're tired. You stop when you're done. - Unknown",
+    "Squats don’t just build muscle, they build character. - Unknown",
+    "The bar on your back is heavy, but your goals are heavier. - Unknown",
+    "Squats don’t get easier, you just get stronger. - Unknown",
+    "Your strength is earned with every rep below parallel. - Unknown",
+    "The squat rack is where excuses go to die. - Unknown",
+    "Every squat rep is a step closer to your strongest self. - Unknown",
+    "Deep squats, deep results. - Unknown",
+    "When in doubt, squat it out. - Unknown",
+    "In the squat rack, only you decide how strong you want to be. - Unknown",
+    "A heavy squat today will make you stronger tomorrow. - Unknown",
+    "No shortcuts on leg day, only squats and sweat. - Unknown",
+    "Strength is built from the ground up, one squat at a time. - Unknown",
+    "You don’t just squat to build legs; you squat to build resilience. - Unknown",
+    "The squat rack: where weakness is left behind, and strength is gained. - Unknown",
+    "Squat low, rise strong. - Unknown",
+    "Squats: because nobody ever wrote a song about small legs. - Unknown"
+];
+
+  
+            var today = new Date();
+            var quoteIndex = today.getDate() % quotes.length;
+
+
+            document.getElementById("motivationalQuote").innerText = quotes[quoteIndex];
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: "Squat Progression"
+                },
+                axisX: {
+                    title: "Date",
+                    valueFormatString: "MMM DD, YYYY", 
+                    labelAngle: -20, 
+                },
+                axisY: {
+                    title: "Weight"
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: dps
+                }]
+            });
+
+            function addDataPointsAndRender() {
+          
+                document.getElementById("quoteContainer").style.display = "none";
+                document.getElementById("chartContainer").style.display = "block";
+
+                xValue = new Date(document.getElementById("yValue").value); 
+                yValue = Number(document.getElementById("xValue").value); 
+                
+          
+                dps.push({
+                    x: xValue,
+                    y: yValue
+                });
+
+                chart.render(); 
+            }
+
+            var renderButton = document.getElementById("renderButton");
+            renderButton.addEventListener("click", addDataPointsAndRender);
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</head>
+
+
+
+<body>
+    <header class="header-style">
+        <button class="logo-button">
+          <a href="website.html">
+            <img class="logo" src="images/largelogo.png" alt="Logo">
+        </button>
+      </a> 
+    </header>
+    <main>
+        <section class="input_format">
+            <div id="quoteContainer" style="font-family: 'Pinyon Script', cursive; display: block; text-align: center; font-size: 100px; height: 430px; font-family:Pinyon Script; color:#e0e5e5; margin: 0px;">
+                <p id="motivationalQuote"></p>
+            </div>
+            
+            <!-- Chart container hidden initially -->
+            <div id="chartContainer" style="height: 500px; width: 100vw; display: none;"></div>
+            <div class="submit-align">
+            
+                <label for="xValue" class="inp">
+                    <input type="number" id="xValue" placeholder="&nbsp;" required>
+                    <span class="label">Weight</span>
+                    <span class="focus-bg"></span>
+                </label>
+                
+                <label for="yValue" class="inp" style="margin-left: 10px;">
+                    <input type="date" id="yValue" placeholder="&nbsp;" required>
+                    <span class="label"></span>
+                    <span class="focus-bg"></span>
+                </label>
+                
+                <button class="submit_button" id="renderButton" role="button" style="margin-left: 100px;">Submit</button>
+                
+            </div>
+        </section>
+    </main>
+</body>
+</html>

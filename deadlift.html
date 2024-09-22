@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Weight</title>
+    <link rel="stylesheet" href="website.css">
+    <link rel="stylesheet" href="weight-strength.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+    
+        window.onload = function() {
+            var dps = []; 
+
+
+            var quotes = [
+    "Deadlifts: because picking yourself up is always worth it. - Unknown",
+    "The deadlift is more than a lift, it's a mindset. - Unknown",
+    "You don't stop deadlifting when you're tired, you stop when you're done. - Unknown",
+    "The weight may be heavy, but your willpower is heavier. - Unknown",
+    "Deadlifts: where strength meets determination. - Unknown",
+    "Pick up the bar, pick up your confidence. - Unknown",
+    "Deadlifts: because nothing worth having comes easy. - Unknown",
+    "Your deadlift is a reflection of your inner strength. - Unknown",
+    "In deadlifts, the bar doesn’t move; you move it. - Unknown",
+    "Strength isn’t just in the weight, it’s in the fight to lift it. - Unknown",
+    "Deadlifts don’t get lighter, you get stronger. - Unknown",
+    "The deadlift doesn’t care about excuses, only results. - Unknown",
+    "Pulling weight from the ground builds more than muscle, it builds resilience. - Unknown",
+    "The barbell never lies, especially in the deadlift. - Unknown",
+    "Deadlifts: where every rep is a battle, but the reward is strength. - Unknown",
+    "Pick it up, because no one else will do it for you. - Unknown",
+    "Every deadlift rep is a chance to show how strong you really are. - Unknown",
+    "Deadlifts: because standing tall starts with lifting low. - Unknown",
+    "In the deadlift, gravity is just another challenge to overcome. - Unknown",
+    "Deadlifts: because nothing says strength like picking up heavy weight from the ground. - Unknown"
+];
+
+    
+            var today = new Date();
+            var quoteIndex = today.getDate() % quotes.length;
+
+            document.getElementById("motivationalQuote").innerText = quotes[quoteIndex];
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: "Deadlift Progression"
+                },
+                axisX: {
+                    title: "Date",
+                    valueFormatString: "MMM DD, YYYY",
+                    labelAngle: -20, 
+                },
+                axisY: {
+                    title: "Weight"
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: dps
+                }]
+            });
+
+            function addDataPointsAndRender() {
+
+                document.getElementById("quoteContainer").style.display = "none";
+                document.getElementById("chartContainer").style.display = "block";
+
+        
+                xValue = new Date(document.getElementById("yValue").value); 
+                yValue = Number(document.getElementById("xValue").value); 
+                
+       
+                dps.push({
+                    x: xValue,
+                    y: yValue
+                });
+
+                chart.render(); 
+            }
+
+            var renderButton = document.getElementById("renderButton");
+            renderButton.addEventListener("click", addDataPointsAndRender);
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</head>
+
+
+
+<body>
+    <header class="header-style">
+        <button class="logo-button">
+          <a href="website.html">
+            <img class="logo" src="images/largelogo.png" alt="Logo">
+        </button>
+      </a> 
+    </header>
+    <main>
+        <section class="input_format">
+            <div id="quoteContainer" style="font-family: 'Pinyon Script', cursive; display: block; text-align: center; font-size: 100px; height: 430px; font-family:Pinyon Script; color:#e0e5e5; margin: 0px;">
+                <p id="motivationalQuote"></p>
+            </div>
+            
+
+            <div id="chartContainer" style="height: 500px; width: 100vw; display: none;"></div>
+            <div class="submit-align">
+            
+                <label for="xValue" class="inp">
+                    <input type="number" id="xValue" placeholder="&nbsp;" required>
+                    <span class="label">Weight</span>
+                    <span class="focus-bg"></span>
+                </label>
+                
+                <label for="yValue" class="inp" style="margin-left: 10px;">
+                    <input type="date" id="yValue" placeholder="&nbsp;" required>
+                    <span class="label"></span>
+                    <span class="focus-bg"></span>
+                </label>
+                
+                <button class="submit_button" id="renderButton" role="button" style="margin-left: 100px;">Submit</button>
+                
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,13 +1,14 @@
 document.addEventListener('scroll', function () {
+
   const body = document.body;
 
-
-  if (window.scrollY > 1) { 
-    body.classList.add('show-buttons');
+  if (window.scrollY > 1) {
+      body.classList.add('show-buttons');
   } else {
-    body.classList.remove('show-buttons');
+      body.classList.remove('show-buttons');
   }
 });
+
 
 
 const quotes = [

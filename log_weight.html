@@ -4,46 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log Weight</title>
-
-    
     <link rel="stylesheet" href="website.css">
-
-    
+    <link rel="stylesheet" href="weight-strength.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script type="text/javascript">
     
-  <header class="header-style">
-    <button class="logo-button">
-      <a href="website.html">
-        <img class="logo" src="largelogo.png" alt="Logo">
-    </button>
-  </a> 
-</header>
+        window.onload = function() {
+            var dps = []; 
+  
+            var quotes = [
+    "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+    "The only way to do great work is to love what you do. - Steve Jobs",
+    "Success is walking from failure to failure with no loss of enthusiasm. - Winston S. Churchill",
+    "What lies behind us and what lies before us are tiny matters compared to what lies within us. - Ralph Waldo Emerson",
+    "Believe you can and you're halfway there. - Theodore Roosevelt",
+    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+    "You miss 100% of the shots you don’t take. - Wayne Gretzky",
+    "Success is how high you bounce when you hit bottom. - George S. Patton",
+    "If you're going through hell, keep going. - Winston S. Churchill",
+    "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+    "Hardships often prepare ordinary people for an extraordinary destiny. - C.S. Lewis",
+    "Opportunities don't happen, you create them. - Chris Grosser",
+    "The secret of getting ahead is getting started. - Mark Twain",
+    "Success usually comes to those who are too busy to be looking for it. - Henry David Thoreau",
+    "Success is not in what you have, but who you are. - Bo Bennett",
+    "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart. - Roy T. Bennett",
+    "You have to expect things of yourself before you can do them. - Michael Jordan",
+    "The only place where success comes before work is in the dictionary. - Vidal Sassoon",
+    "Dream big and dare to fail. - Norman Vaughan",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston S. Churchill",
+    "It does not matter how slowly you go as long as you do not stop. - Confucius",
+    "Success is a series of small wins. - Unknown",
+    "Act as if what you do makes a difference. It does. - William James",
+    "Your time is limited, so don’t waste it living someone else’s life. - Steve Jobs",
+    "Success is the sum of small efforts, repeated day in and day out. - Robert Collier",
+    "The man who moves a mountain begins by carrying away small stones. - Confucius",
+    "Success is simply the sum of all efforts repeated day in and day out. - Robert Collier"
+];
+     
+            var today = new Date();
+            var quoteIndex = today.getDate() % quotes.length;
+
+     
+            document.getElementById("motivationalQuote").innerText = quotes[quoteIndex];
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title: {
+                    text: "Weight Progression"
+                },
+                axisX: {
+                    title: "Date",
+                    valueFormatString: "MMM DD, YYYY", 
+                    labelAngle: -20, 
+                },
+                axisY: {
+                    title: "Weight"
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: dps
+                }]
+            });
+
+            function addDataPointsAndRender() {
+         
+                document.getElementById("quoteContainer").style.display = "none";
+                document.getElementById("chartContainer").style.display = "block";
+
+                xValue = new Date(document.getElementById("yValue").value); 
+                yValue = Number(document.getElementById("xValue").value); 
+                
+               
+                dps.push({
+                    x: xValue,
+                    y: yValue
+                });
+
+                chart.render(); 
+            }
+
+            var renderButton = document.getElementById("renderButton");
+            renderButton.addEventListener("click", addDataPointsAndRender);
+        }
+    </script>
+    
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</head>
 
 
 
+<body>
+    <header class="header-style">
+        <button class="logo-button">
+          <a href="website.html">
+            <img class="logo" src="images/largelogo.png" alt="Logo">
+        </button>
+      </a> 
+    </header>
     <main>
-        <section>
-            <h1 class="page-title">Log Your Weight</h1>
-            <form action="/submit_weight" method="POST" class="weight-form">
-                <label for="weight">Enter your weight (lbs):</label>
-                <input type="number" id="weight" name="weight" step="0.1" required>
+        <section class="input_format">
+            <div id="quoteContainer" style="font-family: 'Pinyon Script', cursive; display: block; text-align: center; font-size: 100px; height: 430px; font-family:Pinyon Script; color:#e0e5e5; margin: 0px;">
+                <p id="motivationalQuote"></p>
+            </div>
+            
+
+            <div id="chartContainer" style="height: 500px; width: 100vw; display: none;"></div>
+            <div class="submit-align">
+            
+                <label for="xValue" class="inp">
+                    <input type="number" id="xValue" placeholder="&nbsp;" required>
+                    <span class="label">Weight</span>
+                    <span class="focus-bg"></span>
+                </label>
                 
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required>
+                <label for="yValue" class="inp" style="margin-left: 10px;">
+                    <input type="date" id="yValue" placeholder="&nbsp;" required>
+                    <span class="label"></span>
+                    <span class="focus-bg"></span>
+                </label>
                 
-                <button type="submit" class="submit-button">Submit</button>
-            </form>
+                <button class="submit_button" id="renderButton" role="button" style="margin-left: 100px;">Submit</button>
+                
+            </div>
         </section>
     </main>
-
-
-
-
-    
-    <script src="website.js"></script>
 </body>
 </html>
